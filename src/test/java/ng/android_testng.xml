@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="AndroidNativeSuite" parallel="tests" thread-count="2">
+    <test name="Android native app test on Android 7">
+        <parameter name="platform" value="Android 11.0"/>
+        <parameter name="systemPort" value="8200"/>
+        <parameter name="deviceName" value="test_delivery"/> <!-- your avd name -->
+        <classes>
+            <class name="signIn.android.SignInTest">
+                <methods>
+                    <include name="testLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Android native app test on Android 8">
+        <parameter name="platform" value="Android 11.0"/>
+        <parameter name="systemPort" value="8201"/>
+        <parameter name="deviceName" value="test_delivery_1"/> <!-- your avd name -->
+        <classes>
+            <class name="signIn.android.SignInTest">
+                <methods>
+                    <include name="testLoginAndLogout"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
