@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AndroidApk {
 
-    private final String apkPath = "your path to apk";
+    private final String apkPath = "/Users/mcs/Development/git/104-mobile-UIAutomation/src/main/resources/apps/11252_prod.apk";
 
 }
