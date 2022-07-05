@@ -26,12 +26,12 @@ public class BaseTest {
         appProperties.load(Files.newInputStream(Paths.get(propertiesFilePath)));
 
         AppiumServer appiumServer = new AppiumServer();
-        appiumServer.startServer();
+        appiumServer.startServer(Integer.parseInt(appProperties.getProperty("appiumPort")));
 
-        if (Platform.ANDROID.name().equals(platform)) {
-            AppFactory.androidLaunch(appProperties, appiumServer);
+        if (Platform.ANDROID.name().equalsIgnoreCase(platform)) {
+            AppFactory.androidLaunch(appProperties, appiumServer.getService());
         } else {
-            AppFactory.iosLaunch(appProperties, appiumServer);
+            AppFactory.iosLaunch(appProperties, appiumServer.getService());
         }
     }
 
