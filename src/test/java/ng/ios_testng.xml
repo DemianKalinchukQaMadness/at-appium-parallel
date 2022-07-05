@@ -6,6 +6,7 @@
         <parameter name="udid" value="794A91D0-0C31-4549-BE16-BB9937DB5239"/> <!-- your device udid -->
         <parameter name="deviceName" value="iPhone 11"/>
         <parameter name="wdaLocalPort" value="8100"/>
+        <parameter name="appiumPort" value="4723"/>
         <classes>
             <class name="signIn.ios.SignInTest">
                 <methods>
@@ -19,6 +20,7 @@
         <parameter name="udid" value="900B3389-C250-4D3E-A859-94CDAF340B86"/> <!-- your device udid -->
         <parameter name="deviceName" value="iPhone 12"/>
         <parameter name="wdaLocalPort" value="8101"/>
+        <parameter name="appiumPort" value="4724"/>
         <classes>
             <class name="signIn.ios.SignInTest">
                 <methods>

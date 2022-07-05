@@ -20,4 +20,14 @@ public class URLConfig implements Serializable {
 
         return null;
     }
+
+    public URL getAppiumURL(String port) {
+        try {
+            return new URL("http://127.0.0.1:" + port + "/wd/hub");
+        } catch (MalformedURLException exception) {
+            exception.printStackTrace();
+        }
+
+        return null;
+    }
 }
