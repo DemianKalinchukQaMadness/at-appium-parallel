@@ -13,7 +13,7 @@ import java.net.URL;
 
 public class IOSBaseTest extends BaseTest {
 
-    @BeforeTest(alwaysRun = true)
+//    @BeforeTest(alwaysRun = true)
     @Parameters({"platform", "udid", "deviceName", "wdaLocalPort", "appiumPort"})
     public void setup(@Optional("iOS 15.5") String platform,
                       @Optional("794A91D0-0C31-4549-BE16-BB9937DB5239") String udid,

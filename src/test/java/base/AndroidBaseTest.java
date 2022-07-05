@@ -12,7 +12,7 @@ import java.net.URL;
 
 public class AndroidBaseTest extends BaseTest {
 
-    @BeforeTest(alwaysRun = true)
+//    @BeforeTest(alwaysRun = true)
     @Parameters({"platform", "systemPort", "deviceName"})
     public void setup(String platform,
                       String systemPort,
