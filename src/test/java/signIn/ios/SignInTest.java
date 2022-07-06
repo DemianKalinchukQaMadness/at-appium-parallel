@@ -1,9 +1,9 @@
 package signIn.ios;
 
-import base.IOSBaseTest;
+import base.BaseTest;
 import org.testng.annotations.Test;
 
-public class SignInTest extends IOSBaseTest {
+public class SignInTest extends BaseTest {
 
     @Test
     public void testLoginAndLogout() {

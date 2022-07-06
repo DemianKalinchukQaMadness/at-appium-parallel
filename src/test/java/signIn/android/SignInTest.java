@@ -1,9 +1,9 @@
 package signIn.android;
 
-import base.AndroidBaseTest;
+import base.BaseTest;
 import org.testng.annotations.Test;
 
-public class SignInTest extends AndroidBaseTest {
+public class SignInTest extends BaseTest {
 
     @Test
     public void testLoginAndLogout() {
