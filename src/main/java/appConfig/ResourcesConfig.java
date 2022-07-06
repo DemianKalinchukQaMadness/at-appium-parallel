@@ -17,18 +17,14 @@ public class ResourcesConfig extends Properties {
         super(new Properties());
     }
 
-    public ResourcesConfig(String propertiesPath) {
-        this();
-        this.propertiesFilePath = Resources.getResource(propertiesPath).getPath();
-    }
-
     public ResourcesConfig(String propertiesPath,
                            String platform) {
-        super(new Properties());
+        this();
         this.propertiesFilePath = Resources.getResource(platform + "/" + propertiesPath).getPath();
+        load();
     }
 
-    public void load() {
+    private void load() {
         try {
             this.load(Files.newInputStream(Paths.get(propertiesFilePath)));
         } catch (IOException exception) {

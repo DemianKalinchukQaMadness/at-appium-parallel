@@ -8,9 +8,10 @@ import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 
-public class AppiumServer {
+import static core.AppiumServerManager.getService;
+import static core.AppiumServerManager.setService;
 
-    private static ThreadLocal<AppiumDriverLocalService> service = new ThreadLocal<>();
+public class AppiumServer {
 
     public AppiumServer() {
         HashMap<String, String> environment = new HashMap<>();
@@ -29,33 +30,7 @@ public class AppiumServer {
         getService().start();
     }
 
-    public static AppiumDriverLocalService getService() {
-        return service.get();
-    }
-
-    public static void setService(AppiumDriverLocalService appiumDriverLocalService) {
-        service.set(appiumDriverLocalService);
-    }
-
-    public AppiumDriverLocalService getInstance() {
-        if (getService() == null) {
-            getService().clearOutPutStreams(); //stop printing appium logs to console
-        }
-
-        return getService();
-    }
-
-    public void startServer() {
-        getInstance().start(); //start appium server
-    }
-
     public URL getServerUrl() {
         return getService().getUrl();
-    }
-
-    public void stopServer() {
-        if (getService() != null) {
-            getService().stop();
-        }
     }
 }

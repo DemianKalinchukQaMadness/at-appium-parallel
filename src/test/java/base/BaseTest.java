@@ -4,6 +4,7 @@ import appConfig.Platform;
 import appConfig.ResourcesConfig;
 import core.AppFactory;
 import core.AppiumServer;
+import core.AppiumServerManager;
 import core.DriverManager;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -16,7 +17,6 @@ public class BaseTest {
     public void beforeSuite(String platform,
                             String properties) {
         ResourcesConfig resourcesConfig = new ResourcesConfig(properties, platform);
-        resourcesConfig.load();
 
         if (Platform.isAndroid(platform)) {
             AppFactory.androidLaunch(resourcesConfig, new AppiumServer());
@@ -30,7 +30,7 @@ public class BaseTest {
     public void teardown() {
         if (DriverManager.getDriver() != null) {
             DriverManager.getDriver().quit();
-            AppiumServer.getService().stop();
+            AppiumServerManager.getService().stop();
         }
     }
 }
