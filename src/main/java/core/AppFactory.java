@@ -4,39 +4,42 @@ import capabilities.AndroidCapabilities;
 import capabilities.IOSCapabilities;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.remote.MobileCapabilityType;
 
 import java.util.Properties;
 
 public class AppFactory {
 
+    private static final String LOCAL_PORT = "localPort";
+    private static final String ARTIFACT_PATH = "artifactPath";
+
     public static void androidLaunch(Properties properties,
-                                     AppiumDriverLocalService appiumService) {
+                                     AppiumServer appiumServer) {
         AndroidCapabilities capabilities = new AndroidCapabilities(
-                properties.getProperty("platformVersion"),
-                properties.getProperty("deviceName"),
-                properties.getProperty("localPort"),
-                properties.getProperty("apkPath"));
+                properties.getProperty(MobileCapabilityType.PLATFORM_VERSION),
+                properties.getProperty(MobileCapabilityType.DEVICE_NAME),
+                properties.getProperty(LOCAL_PORT),
+                properties.getProperty(ARTIFACT_PATH));
 
         DriverManager.setDriver(
                 new AndroidDriver<>(
-                        appiumService.getUrl(),
+                        appiumServer.getServerUrl(),
                         capabilities.getCapabilities()));
     }
 
     public static void iosLaunch(Properties properties,
-                                 AppiumDriverLocalService appiumService) {
+                                 AppiumServer appiumServer) {
         IOSCapabilities capabilities = new IOSCapabilities(
-                properties.getProperty("platformName"),
-                properties.getProperty("platformVersion"),
-                properties.getProperty("deviceName"),
-                properties.getProperty("udid"),
-                properties.getProperty("localPort"),
-                properties.getProperty("appPath"));
+                properties.getProperty(MobileCapabilityType.PLATFORM_NAME),
+                properties.getProperty(MobileCapabilityType.PLATFORM_VERSION),
+                properties.getProperty(MobileCapabilityType.DEVICE_NAME),
+                properties.getProperty(MobileCapabilityType.UDID),
+                properties.getProperty(LOCAL_PORT),
+                properties.getProperty(ARTIFACT_PATH));
 
         DriverManager.setDriver(
                 new IOSDriver<>(
-                        appiumService.getUrl(),
+                        appiumServer.getServerUrl(),
                         capabilities.getCapabilities()));
     }
 }
