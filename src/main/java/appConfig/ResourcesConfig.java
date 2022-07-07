@@ -17,8 +17,7 @@ public class ResourcesConfig extends Properties {
         super(new Properties());
     }
 
-    public ResourcesConfig(String propertiesPath,
-                           String platform) {
+    public ResourcesConfig(String propertiesPath, String platform) {
         this();
         this.propertiesFilePath = Resources.getResource(platform + "/" + propertiesPath).getPath();
         load();
