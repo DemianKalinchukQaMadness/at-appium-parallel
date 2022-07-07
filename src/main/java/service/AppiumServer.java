@@ -1,4 +1,4 @@
-package core;
+package service;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
@@ -8,8 +8,8 @@ import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 
-import static core.AppiumServerManager.getService;
-import static core.AppiumServerManager.setService;
+import static service.AppiumServerManager.getService;
+import static service.AppiumServerManager.setService;
 
 public class AppiumServer {
 
@@ -29,7 +29,6 @@ public class AppiumServer {
         setService(AppiumDriverLocalService.buildService(builder));
         getService().start();
     }
-
     public URL getServerUrl() {
         return getService().getUrl();
     }

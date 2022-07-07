@@ -1,4 +1,4 @@
-package core;
+package service;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 
@@ -15,7 +15,6 @@ public class AppiumServerManager {
     public static void setService(AppiumDriverLocalService appiumDriverLocalService) {
         service.set(appiumDriverLocalService);
     }
-
     public static URL getServerUrl() {
         return getService().getUrl();
     }

@@ -8,4 +8,11 @@
             <class name="signIn.ios.SignInTest"/>
         </classes>
     </test>
+    <test name="iPhone_13_Pro">
+        <parameter name="platform" value="ios"/>
+        <parameter name="properties" value="iPhone_13_Pro.properties"/>
+        <classes>
+            <class name="signIn.ios.SignInTest"/>
+        </classes>
+    </test>
 </suite>

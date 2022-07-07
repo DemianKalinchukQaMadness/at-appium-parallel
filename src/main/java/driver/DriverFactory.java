@@ -23,12 +23,9 @@
  */
 package driver;
 
-
-import core.DriverManager;
+import driver.manager.DriverManager;
 import driver.manager.AndroidDriverManager;
 import driver.manager.IOSDriverManager;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 
 import java.util.Properties;
 
@@ -39,7 +36,6 @@ public class DriverFactory {
         switch (mobilePlatform) {
             case IOS:
                 DriverManager.setDriver(new IOSDriverManager().createInstance(props));
-
                 break;
 
             case ANDROID:
@@ -47,9 +43,8 @@ public class DriverFactory {
                 break;
 
             default:
-                throw new RuntimeException(
+                throw new IllegalStateException(
                     "Platform not supported! Check if you set ios or android on the parameter.");
         }
-
     }
 }

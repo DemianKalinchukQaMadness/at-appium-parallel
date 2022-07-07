@@ -25,56 +25,44 @@ package driver.manager;
 
 
 import com.google.common.io.Resources;
-import core.AppiumServerManager;
-import driver.IDriver;
+import service.AppiumServerManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.IOSMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
-import io.appium.java_client.remote.MobilePlatform;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import static io.appium.java_client.remote.IOSMobileCapabilityType.*;
+import static io.appium.java_client.remote.MobileCapabilityType.*;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Properties;
 
-import static io.appium.java_client.remote.MobileCapabilityType.*;
-import static org.openqa.selenium.remote.CapabilityType.PLATFORM_NAME;
-
-public class IOSDriverManager implements IDriver {
-
-
+public class IOSDriverManager {
     private AppiumDriver<MobileElement> driver;
 
-    @Override
     public AppiumDriver<MobileElement> createInstance(Properties props) {
-//        try {
+        try {
             DesiredCapabilities caps = new DesiredCapabilities();
             String appPath = Resources.getResource("apps/"+props.getProperty("appName")).getPath();
 
-            caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
-            caps.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.IOS);
-            caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, props.getProperty("platformVersion"));
-            caps.setCapability(MobileCapabilityType.DEVICE_NAME, props.getProperty("deviceName"));
-            caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, props.getProperty("newCommandTimeout", "300"));
-            caps.setCapability(MobileCapabilityType.UDID, props.getProperty("udid"));
-            caps.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, props.getProperty("localPort", "8202"));
+            caps.setCapability(AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
+            caps.setCapability(PLATFORM_NAME, Platform.IOS);
+            caps.setCapability(PLATFORM_VERSION, props.getProperty("platformVersion"));
+            caps.setCapability(DEVICE_NAME, props.getProperty("deviceName"));
+            caps.setCapability(NEW_COMMAND_TIMEOUT, props.getProperty("newCommandTimeout", "300"));
+            caps.setCapability(UDID, props.getProperty("udid"));
+            caps.setCapability(APP, appPath);
 
-            caps.setCapability(MobileCapabilityType.APP, appPath);
-
-            caps.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, Boolean.valueOf(props.getProperty("autoAcceptAlerts", "true")));
+            caps.setCapability(WDA_LOCAL_PORT, props.getProperty("localPort", "8202"));
+            caps.setCapability(AUTO_ACCEPT_ALERTS, Boolean.valueOf(props.getProperty("autoAcceptAlerts", "true")));
 
             driver = new IOSDriver(AppiumServerManager.getServerUrl(), caps);
-//        } catch (Exception e) {
-//            System.out.println("Failed to initiate the tests for the IOS device");
-//        }
-
+        } catch (Exception e) {
+            System.out.println("Failed to initiate the tests for the IOS device");
+        }
         return driver;
     }
 }

@@ -24,8 +24,7 @@
 package driver.manager;
 
 import com.google.common.io.Resources;
-import core.AppiumServerManager;
-import driver.IDriver;
+import service.AppiumServerManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -34,41 +33,34 @@ import io.appium.java_client.remote.*;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Properties;
 
+import static io.appium.java_client.remote.AndroidMobileCapabilityType.*;
 import static io.appium.java_client.remote.MobileCapabilityType.*;
-import static org.openqa.selenium.remote.CapabilityType.PLATFORM_NAME;
-
-public class AndroidDriverManager implements IDriver {
-
+public class AndroidDriverManager{
     private AppiumDriver<MobileElement> driver;
-
-    @Override
     public AppiumDriver<MobileElement> createInstance(Properties props) {
-//        try {
-
+        try {
             DesiredCapabilities caps = new DesiredCapabilities();
             String appPath = Resources.getResource("apps/"+props.getProperty("appName")).getPath();
 
-            caps.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
-            caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, props.getProperty("platformVersion"));
-            caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
-            caps.setCapability(MobileCapabilityType.DEVICE_NAME, props.getProperty("deviceName"));
-            caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, props.getProperty("newCommandTimeout"));
-            caps.setCapability(MobileCapabilityType.APP, appPath);
-            caps.setCapability(AndroidMobileCapabilityType.SYSTEM_PORT, props.getProperty("systemPort"));
+            caps.setCapability(PLATFORM_NAME, Platform.ANDROID);
+            caps.setCapability(PLATFORM_VERSION, props.getProperty("platformVersion"));
+            caps.setCapability(AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
+            caps.setCapability(DEVICE_NAME, props.getProperty("deviceName"));
+            caps.setCapability(NEW_COMMAND_TIMEOUT, props.getProperty("newCommandTimeout"));
+            caps.setCapability(APP, appPath);
 
-            caps.setCapability(AndroidMobileCapabilityType.AVD, props.getProperty("avd"));
-            caps.setCapability(AndroidMobileCapabilityType.ADB_EXEC_TIMEOUT, props.getProperty("adbExecTimeout"));
-            caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, props.getProperty("appPackage"));
-            caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, props.getProperty("appActivity"));
+            caps.setCapability(SYSTEM_PORT, props.getProperty("systemPort"));
+            caps.setCapability(AVD, props.getProperty("avd"));
+            caps.setCapability(ADB_EXEC_TIMEOUT, props.getProperty("adbExecTimeout"));
+            caps.setCapability(APP_PACKAGE, props.getProperty("appPackage"));
+            caps.setCapability(APP_ACTIVITY, props.getProperty("appActivity"));
 
             driver = new AndroidDriver<>(AppiumServerManager.getServerUrl(), caps);
-//        } catch (Exception e) {
-//            System.out.println("Failed to initiate the tests for the Android device");
-//        }
+        } catch (Exception e) {
+            System.out.println("Failed to initiate the tests for the Android device");
+        }
         return driver;
     }
 }

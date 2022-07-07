@@ -1,7 +1,7 @@
 package signIn.ios;
 
 import base.BaseTest;
-import core.DriverManager;
+import driver.manager.DriverManager;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;

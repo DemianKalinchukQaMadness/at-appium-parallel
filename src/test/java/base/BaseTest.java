@@ -1,9 +1,9 @@
 package base;
 
-import appConfig.ResourcesConfig;
-import core.AppiumServer;
-import core.AppiumServerManager;
-import core.DriverManager;
+import config.ResourcesConfig;
+import service.AppiumServer;
+import service.AppiumServerManager;
+import driver.manager.DriverManager;
 import driver.DriverFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -14,9 +14,11 @@ public class BaseTest {
     @Parameters(value = {"platform", "properties"})
     public void beforeSuite(@Optional("ios") String platform, @Optional("iPhone_11.properties") String properties) {
         appiumServer = new AppiumServer();
+
         System.out.println("Appium server started " + appiumServer.getServerUrl());
         System.out.println(platform);
         System.out.println(properties);
+
         ResourcesConfig resourcesConfig = new ResourcesConfig(properties, platform);
         DriverFactory.createInstance(platform,resourcesConfig);
         System.out.println("Driver created");

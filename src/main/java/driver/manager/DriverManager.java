@@ -1,4 +1,4 @@
-package core;
+package driver.manager;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
