@@ -1,26 +1,25 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="UniversalSuite" verbose="1" parallel="tests">
+<suite name="AndroidNativeSuite" parallel="tests">
+    <test name="Android_0">
+        <parameter name="platform" value="android"/>
+        <parameter name="properties" value="android.properties"/>
+        <classes>
+            <class name="signIn.android.SignInTest"/>
+        </classes>
+    </test>
+    <test name="Android_1">
+        <parameter name="platform" value="android"/>
+        <parameter name="properties" value="android_1.properties"/>
+        <classes>
+            <class name="signIn.android.SignInTest2"/>
+        </classes>
+    </test>
     <test name="IOS_1">
         <parameter name="platform" value="ios"/>
         <parameter name="properties" value="ios.properties"/>
         <classes>
-            <class name="signIn.ios.SignInTest">
-                <methods>
-                    <include name="testLogin"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-    <test name="Android_2">
-        <parameter name="platform" value="android"/>
-        <parameter name="properties" value="android.properties"/>
-        <classes>
-            <class name="signIn.android.SignInTest">
-                <methods>
-                    <include name="testLogin"/>
-                </methods>
-            </class>
+            <class name="signIn.ios.SignInTest"/>
         </classes>
     </test>
 </suite>

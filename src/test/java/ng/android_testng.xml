@@ -23,4 +23,15 @@
             </class>
         </classes>
     </test>
+    <test name="IOS_1">
+        <parameter name="platform" value="ios"/>
+        <parameter name="properties" value="ios.properties"/>
+        <classes>
+            <class name="signIn.ios.SignInTest">
+<!--                <methods>-->
+<!--                    <include name="testLogin"/>-->
+<!--                </methods>-->
+            </class>
+        </classes>
+    </test>
 </suite>

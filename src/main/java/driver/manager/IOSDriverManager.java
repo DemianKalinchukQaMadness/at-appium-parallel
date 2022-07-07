@@ -54,7 +54,7 @@ public class IOSDriverManager implements IDriver {
 
     @Override
     public AppiumDriver<MobileElement> createInstance(Properties props) {
-        try {
+//        try {
             DesiredCapabilities caps = new DesiredCapabilities();
             String appPath = Resources.getResource("apps/"+props.getProperty("appName")).getPath();
 
@@ -63,14 +63,17 @@ public class IOSDriverManager implements IDriver {
             caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, props.getProperty("platformVersion"));
             caps.setCapability(MobileCapabilityType.DEVICE_NAME, props.getProperty("deviceName"));
             caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, props.getProperty("newCommandTimeout", "300"));
+            caps.setCapability(MobileCapabilityType.UDID, props.getProperty("udid"));
+            caps.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, props.getProperty("localPort", "8202"));
+
             caps.setCapability(MobileCapabilityType.APP, appPath);
 
-            caps.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, Boolean.valueOf(props.getProperty("autoAcceptAlerts", "false")));
+            caps.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, Boolean.valueOf(props.getProperty("autoAcceptAlerts", "true")));
 
             driver = new IOSDriver(AppiumServerManager.getServerUrl(), caps);
-        } catch (Exception e) {
-            System.out.println("Failed to initiate the tests for the IOS device");
-        }
+//        } catch (Exception e) {
+//            System.out.println("Failed to initiate the tests for the IOS device");
+//        }
 
         return driver;
     }

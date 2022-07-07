@@ -1,7 +1,12 @@
 package signIn.ios;
 
 import base.BaseTest;
+import core.DriverManager;
+import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 public class SignInTest extends BaseTest {
 
@@ -9,11 +14,27 @@ public class SignInTest extends BaseTest {
     public void testLoginAndLogout() {
         System.out.println("from logout");
         System.out.println("test: " + Thread.currentThread().getId());
+        var driver = DriverManager.getDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        System.out.println("from logout");
+        String input = "380967930959";
+
+        driver.findElement(By.xpath("//XCUIElementTypeTextField")).sendKeys(input);
+        Assert.assertTrue(true);
+        System.out.println("test: " + Thread.currentThread().getId());
     }
 
     @Test
     public void testLogin() {
         System.out.println("from login");
         System.out.println("test: " + Thread.currentThread().getId());
+
+        var driver = DriverManager.getDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        String input = "380967930000";
+        driver.findElement(By.xpath("//XCUIElementTypeTextField")).sendKeys(input);
+
+        driver.findElement(By.xpath("//XCUIElementTypeButton")).click();
+        Assert.assertTrue(true);
     }
 }

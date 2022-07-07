@@ -17,7 +17,7 @@ public class BaseTest {
     protected AppiumServer appiumServer = null;
     @BeforeTest(alwaysRun = true)
     @Parameters(value = {"platform", "properties"})
-    public void beforeSuite(@Optional("android") String platform, @Optional("android.properties") String properties) {
+    public void beforeSuite(@Optional("ios") String platform, @Optional("iPhone_11.properties") String properties) {
 
         appiumServer = new AppiumServer();
         System.out.println(platform);
@@ -32,7 +32,6 @@ public class BaseTest {
 //            AppFactory.iosLaunch(resourcesConfig, new AppiumServer());
 //        }
     }
-
     @AfterTest(alwaysRun = true)
     public void teardown() {
         if (DriverManager.getDriver() != null) {
