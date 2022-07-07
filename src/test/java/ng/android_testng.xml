@@ -1,37 +1,19 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="AndroidNativeSuite" parallel="tests" thread-count="2">
-    <test name="Android_0">
+<suite name="AndroidNativeSuite" parallel="tests">
+    <test name="Pixel_3A">
         <parameter name="platform" value="android"/>
-        <parameter name="properties" value="android.properties"/>
+        <parameter name="properties" value="Pixel_3A.properties"/>
         <classes>
-            <class name="signIn.android.SignInTest">
-                <methods>
-                    <include name="testLogin"/>
-                </methods>
-            </class>
+            <class name="signIn.android.SignInTest"/>
         </classes>
     </test>
-    <test name="Android_1">
+
+    <test name="Pixel_4_XL">
         <parameter name="platform" value="android"/>
-        <parameter name="properties" value="android_1.properties"/>
+        <parameter name="properties" value="Pixel_4_XL.properties"/>
         <classes>
-            <class name="signIn.android.SignInTest">
-                <methods>
-                    <include name="testLoginAndLogout"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-    <test name="IOS_1">
-        <parameter name="platform" value="ios"/>
-        <parameter name="properties" value="ios.properties"/>
-        <classes>
-            <class name="signIn.ios.SignInTest">
-<!--                <methods>-->
-<!--                    <include name="testLogin"/>-->
-<!--                </methods>-->
-            </class>
+            <class name="signIn.android.SignInTest2"/>
         </classes>
     </test>
 </suite>

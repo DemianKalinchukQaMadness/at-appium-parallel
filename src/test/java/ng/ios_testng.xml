@@ -1,34 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="IOSNativeSuite" verbose="1" parallel="tests" thread-count="2">
-    <test name="IOS native app test on iPhone 11">
-        <parameter name="platform" value="iOS 15.5"/>
-<!--        <parameter name="udid" value="794A91D0-0C31-4549-BE16-BB9937DB5239"/> &lt;!&ndash; Сережа &ndash;&gt;-->
-        <parameter name="udid" value="4110A474-CB27-47CE-BA88-89AA89543267"/> <!-- Саша -->
-        <parameter name="deviceName" value="iPhone 11"/>
-        <parameter name="wdaLocalPort" value="8100"/>
-        <parameter name="appiumPort" value="4723"/>
+<suite name="IOSNativeSuite" verbose="1" parallel="tests">
+    <test name="iPhone_11">
+        <parameter name="platform" value="ios"/>
+        <parameter name="properties" value="iPhone_11.properties"/>
         <classes>
-            <class name="signIn.ios.SignInTest">
-                <methods>
-                    <include name="testLoginAndLogout"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-    <test name="IOS native app test on iPhone 12">
-        <parameter name="platform" value="iOS 15.5"/>
-        <!-- <parameter name="udid" value="900B3389-C250-4D3E-A859-94CDAF340B86"/> --> <!-- Сережа -->
-        <parameter name="udid" value="F3AEB691-EB7E-4E9A-805E-45EC12F6146B"/> <!-- Саша -->
-        <parameter name="deviceName" value="iPhone 12"/>
-        <parameter name="wdaLocalPort" value="8101"/>
-        <parameter name="appiumPort" value="4724"/>
-        <classes>
-            <class name="signIn.ios.SignInTest">
-                <methods>
-                    <include name="testLogin"/>
-                </methods>
-            </class>
+            <class name="signIn.ios.SignInTest"/>
         </classes>
     </test>
 </suite>

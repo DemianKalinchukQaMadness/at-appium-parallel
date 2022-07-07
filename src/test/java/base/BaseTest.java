@@ -24,13 +24,6 @@ public class BaseTest {
         System.out.println(properties);
         ResourcesConfig resourcesConfig = new ResourcesConfig(properties, platform);
         DriverFactory.createInstance(platform,resourcesConfig);
-
-//        if (Platform.isAndroid(platform)) {
-//            AppFactory.androidLaunch(resourcesConfig, new AppiumServer());
-//
-//        } else {
-//            AppFactory.iosLaunch(resourcesConfig, new AppiumServer());
-//        }
     }
     @AfterTest(alwaysRun = true)
     public void teardown() {
