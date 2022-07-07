@@ -1,36 +1,42 @@
 package base;
 
-import appConfig.Platform;
-import appConfig.ResourcesConfig;
-import core.AppFactory;
-import core.AppiumServer;
-import core.AppiumServerManager;
-import core.DriverManager;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
+import config.ResourcesConfig;
+import service.AppiumServer;
+import service.AppiumServerManager;
+import driver.manager.DriverManager;
+import driver.DriverFactory;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
 
 public class BaseTest {
-
+    protected AppiumServer appiumServer = null;
     @BeforeTest(alwaysRun = true)
     @Parameters(value = {"platform", "properties"})
-    public void beforeSuite(String platform,
-                            String properties) {
+    public void beforeSuite(@Optional("ios") String platform, @Optional("iPhone_11.properties") String properties) {
+        appiumServer = new AppiumServer();
+
+        System.out.println("Appium server started " + appiumServer.getServerUrl());
+        System.out.println(platform);
+        System.out.println(properties);
+
         ResourcesConfig resourcesConfig = new ResourcesConfig(properties, platform);
-
-        if (Platform.isAndroid(platform)) {
-            AppFactory.androidLaunch(resourcesConfig, new AppiumServer());
-
-        } else {
-            AppFactory.iosLaunch(resourcesConfig, new AppiumServer());
-        }
+        DriverFactory.createInstance(platform,resourcesConfig);
+        System.out.println("Driver created");
     }
+
+    @AfterMethod(alwaysRun = true)
+    public void afterMethod(ITestResult result) {
+        DriverManager.getDriver().resetApp();
+        System.out.println("App reset!");
+    }
+
 
     @AfterTest(alwaysRun = true)
     public void teardown() {
         if (DriverManager.getDriver() != null) {
             DriverManager.getDriver().quit();
             AppiumServerManager.getService().stop();
+            System.out.println("Appium server stopped!");
         }
     }
 }

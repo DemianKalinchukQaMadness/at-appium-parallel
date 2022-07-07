@@ -1,0 +1,32 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Parallel suite" verbose="1" parallel="tests">
+    <test name="Pixel_3A">
+        <parameter name="platform" value="android"/>
+        <parameter name="properties" value="Pixel_3A.properties"/>
+        <classes>
+            <class name="signIn.android.SignInTest"/>
+        </classes>
+    </test>
+    <test name="Pixel_4_XL">
+        <parameter name="platform" value="android"/>
+        <parameter name="properties" value="Pixel_4_XL.properties"/>
+        <classes>
+            <class name="signIn.android.SignInTest2"/>
+        </classes>
+    </test>
+    <test name="iPhone_11">
+        <parameter name="platform" value="ios"/>
+        <parameter name="properties" value="iPhone_11.properties"/>
+        <classes>
+            <class name="signIn.ios.SignInTest"/>
+        </classes>
+    </test>
+    <test name="iPhone_13_Pro">
+        <parameter name="platform" value="ios"/>
+        <parameter name="properties" value="iPhone_13_Pro.properties"/>
+        <classes>
+            <class name="signIn.ios.SignInTest"/>
+        </classes>
+    </test>
+</suite>
