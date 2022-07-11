@@ -1,42 +1,34 @@
 package base;
 
-import config.ResourcesConfig;
-import service.AppiumServer;
-import service.AppiumServerManager;
-import driver.manager.DriverManager;
+import config.ResourcesYaml;
 import driver.DriverFactory;
+import driver.manager.DriverManager;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import service.AppiumServer;
+import service.AppiumServerManager;
 
 public class BaseTest {
-    protected AppiumServer appiumServer = null;
+
     @BeforeTest(alwaysRun = true)
-    @Parameters(value = {"platform", "properties"})
-    public void beforeSuite(@Optional("ios") String platform, @Optional("iPhone_11.properties") String properties) {
-        appiumServer = new AppiumServer();
-
-        System.out.println("Appium server started " + appiumServer.getServerUrl());
-        System.out.println(platform);
-        System.out.println(properties);
-
-        ResourcesConfig resourcesConfig = new ResourcesConfig(properties, platform);
-        DriverFactory.createInstance(platform,resourcesConfig);
-        System.out.println("Driver created");
+    @Parameters(value = {"deviceId"})
+    public void beforeTest(@Optional("ios_1") String deviceId) {
+        new AppiumServer();
+        String platform = deviceId.split("_")[0];
+        ResourcesYaml resourcesYaml = new ResourcesYaml(platform);
+        DriverFactory.createInstance(platform, deviceId, resourcesYaml);
     }
 
     @AfterMethod(alwaysRun = true)
     public void afterMethod(ITestResult result) {
         DriverManager.getDriver().resetApp();
-        System.out.println("App reset!");
     }
-
 
     @AfterTest(alwaysRun = true)
     public void teardown() {
         if (DriverManager.getDriver() != null) {
             DriverManager.getDriver().quit();
             AppiumServerManager.getService().stop();
-            System.out.println("Appium server stopped!");
         }
     }
 }

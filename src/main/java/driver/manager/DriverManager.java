@@ -9,11 +9,11 @@ public class DriverManager {
 
     private final static ThreadLocal<AppiumDriver<MobileElement>> driver = new ThreadLocal<>();
 
-    public synchronized static void setDriver(AppiumDriver<MobileElement> webDriver) {
+    public static void setDriver(AppiumDriver<MobileElement> webDriver) {
         driver.set(webDriver);
     }
 
-    public synchronized static AppiumDriver<MobileElement> getDriver() {
+    public static AppiumDriver<MobileElement> getDriver() {
         return driver.get();
     }
 }

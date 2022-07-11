@@ -23,11 +23,15 @@
  */
 package driver;
 
-import driver.manager.DriverManager;
+import config.ResourcesYaml;
 import driver.manager.AndroidDriverManager;
+import driver.manager.DriverManager;
 import driver.manager.IOSDriverManager;
 
 import java.util.Properties;
+
+import static driver.Platform.ANDROID;
+import static driver.Platform.IOS;
 
 public class DriverFactory {
     public static void createInstance(String platform, Properties props) {
@@ -40,6 +44,28 @@ public class DriverFactory {
 
             case ANDROID:
                 DriverManager.setDriver(new AndroidDriverManager().createInstance(props));
+                break;
+
+            default:
+                throw new IllegalStateException(
+                    "Platform not supported! Check if you set ios or android on the parameter.");
+        }
+    }
+
+    public static void createInstance(String platform,
+                                      String deviceId,
+                                      ResourcesYaml resourcesYaml) {
+        switch (Platform.valueOf(platform.toUpperCase())) {
+            case IOS:
+                DriverManager.setDriver(
+                        new IOSDriverManager()
+                                .createInstance(deviceId, resourcesYaml.getIosConfig()));
+                break;
+
+            case ANDROID:
+                DriverManager.setDriver(
+                        new AndroidDriverManager()
+                                .createInstance(deviceId, resourcesYaml.getAndroidConfig()));
                 break;
 
             default:

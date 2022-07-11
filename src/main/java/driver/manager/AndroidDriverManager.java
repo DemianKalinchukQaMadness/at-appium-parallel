@@ -24,6 +24,10 @@
 package driver.manager;
 
 import com.google.common.io.Resources;
+import config.ResourcesYaml;
+import config.yml.android.AndroidConfig;
+import config.yml.android.AndroidDeviceConfig;
+import config.yml.ios.IOSDeviceConfig;
 import service.AppiumServerManager;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -37,12 +41,14 @@ import java.util.Properties;
 
 import static io.appium.java_client.remote.AndroidMobileCapabilityType.*;
 import static io.appium.java_client.remote.MobileCapabilityType.*;
-public class AndroidDriverManager{
+public class AndroidDriverManager {
+
     private AppiumDriver<MobileElement> driver;
+
     public AppiumDriver<MobileElement> createInstance(Properties props) {
         try {
             DesiredCapabilities caps = new DesiredCapabilities();
-            String appPath = Resources.getResource("apps/"+props.getProperty("appName")).getPath();
+            String appPath = Resources.getResource("apps/" + props.getProperty("appName")).getPath();
 
             caps.setCapability(PLATFORM_NAME, Platform.ANDROID);
             caps.setCapability(PLATFORM_VERSION, props.getProperty("platformVersion"));
@@ -59,6 +65,33 @@ public class AndroidDriverManager{
 
             driver = new AndroidDriver<>(AppiumServerManager.getServerUrl(), caps);
         } catch (Exception e) {
+            System.out.println("Failed to initiate the tests for the Android device");
+        }
+        return driver;
+    }
+
+    public AppiumDriver<MobileElement> createInstance(String deviceId, AndroidConfig config) {
+        AndroidDeviceConfig deviceConfig = config.getDeviceById(deviceId);
+        try {
+            DesiredCapabilities caps = new DesiredCapabilities();
+
+            caps.setCapability(PLATFORM_NAME, Platform.ANDROID);
+            caps.setCapability(PLATFORM_VERSION, deviceConfig.getVersion());
+            caps.setCapability(AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
+            caps.setCapability(DEVICE_NAME, deviceConfig.getDeviceName());
+//            caps.setCapability(NEW_COMMAND_TIMEOUT, props.getProperty("newCommandTimeout"));
+            caps.setCapability(APP, config.getAppPath());
+
+            caps.setCapability(SYSTEM_PORT, deviceConfig.getDevicePort());
+            caps.setCapability(AVD, deviceConfig.getDeviceName());
+//            caps.setCapability(ADB_EXEC_TIMEOUT, props.getProperty("adbExecTimeout"));
+//            caps.setCapability(APP_PACKAGE, props.getProperty("appPackage"));
+//            caps.setCapability(APP_ACTIVITY, props.getProperty("appActivity"));
+
+//            DriverManager.setDriver(new AndroidDriver<>(AppiumServerManager.getServerUrl(), caps));
+            driver = new AndroidDriver<>(AppiumServerManager.getServerUrl(), caps);
+        } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("Failed to initiate the tests for the Android device");
         }
         return driver;
