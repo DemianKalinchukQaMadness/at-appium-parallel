@@ -13,7 +13,6 @@ public class BaseTest extends BaseSuite {
     @Parameters(value = {"deviceId"})
     public void beforeTest(@Optional("ios_1") String deviceId) {
         new AppiumServer();
-
         DriverFactory.createInstance(deviceId, resourcesYaml);
     }
 
