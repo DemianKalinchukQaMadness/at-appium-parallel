@@ -1,11 +1,13 @@
 package config.yml.ios;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 public class IOSConfig {
 
     @JsonProperty("app")
@@ -13,7 +15,6 @@ public class IOSConfig {
 
     @JsonProperty("devices")
     private List<IOSDeviceConfig> iosDevices;
-
 
     public IOSDeviceConfig getDeviceById(String deviceId) {
         return iosDevices.stream()

@@ -24,53 +24,16 @@
 package driver;
 
 import config.ResourcesYaml;
-import driver.manager.AndroidDriverManager;
 import driver.manager.DriverManager;
-import driver.manager.IOSDriverManager;
-
-import java.util.Properties;
-
-import static driver.Platform.ANDROID;
-import static driver.Platform.IOS;
+import driver.manager.AppiumDriverManager;
 
 public class DriverFactory {
-    public static void createInstance(String platform, Properties props) {
-        Platform mobilePlatform = Platform.valueOf(platform.toUpperCase());
 
-        switch (mobilePlatform) {
-            case IOS:
-                DriverManager.setDriver(new IOSDriverManager().createInstance(props));
-                break;
-
-            case ANDROID:
-                DriverManager.setDriver(new AndroidDriverManager().createInstance(props));
-                break;
-
-            default:
-                throw new IllegalStateException(
-                    "Platform not supported! Check if you set ios or android on the parameter.");
-        }
-    }
-
-    public static void createInstance(String platform,
-                                      String deviceId,
+    public static void createInstance(String deviceId,
                                       ResourcesYaml resourcesYaml) {
-        switch (Platform.valueOf(platform.toUpperCase())) {
-            case IOS:
-                DriverManager.setDriver(
-                        new IOSDriverManager()
-                                .createInstance(deviceId, resourcesYaml.getIosConfig()));
-                break;
-
-            case ANDROID:
-                DriverManager.setDriver(
-                        new AndroidDriverManager()
-                                .createInstance(deviceId, resourcesYaml.getAndroidConfig()));
-                break;
-
-            default:
-                throw new IllegalStateException(
-                    "Platform not supported! Check if you set ios or android on the parameter.");
-        }
+        if (deviceId.contains("ios"))
+            DriverManager.setDriver(new AppiumDriverManager(resourcesYaml.getIosConfig().getDeviceById(deviceId)));
+        else
+            DriverManager.setDriver(new AppiumDriverManager(resourcesYaml.getAndroidConfig().getDeviceById(deviceId)));
     }
 }

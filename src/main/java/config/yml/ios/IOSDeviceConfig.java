@@ -1,10 +1,12 @@
 package config.yml.ios;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-public class IOSDeviceConfig {
+@Getter
+@Setter
+public class IOSDeviceConfig extends IOSConfig {
 
     @JsonProperty("deviceId")
     private String id;
@@ -20,4 +22,8 @@ public class IOSDeviceConfig {
 
     @JsonProperty("udid")
     private String udid;
+
+    public String getAppPath() {
+        return super.getAppPath();
+    }
 }

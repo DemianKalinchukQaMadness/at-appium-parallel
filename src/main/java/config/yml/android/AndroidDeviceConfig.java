@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AndroidDeviceConfig {
+public class AndroidDeviceConfig extends AndroidConfig {
 
     @JsonProperty("deviceId")
     private String id;

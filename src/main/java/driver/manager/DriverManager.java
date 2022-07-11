@@ -1,19 +1,17 @@
 package driver.manager;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import lombok.Getter;
 
 @Getter
 public class DriverManager {
 
-    private final static ThreadLocal<AppiumDriver<MobileElement>> driver = new ThreadLocal<>();
+    private final static ThreadLocal<AppiumDriverManager> webDriver = new ThreadLocal<>();
 
-    public static void setDriver(AppiumDriver<MobileElement> webDriver) {
-        driver.set(webDriver);
+    public static void setDriver(AppiumDriverManager driver) {
+        webDriver.set(driver);
     }
 
-    public static AppiumDriver<MobileElement> getDriver() {
-        return driver.get();
+    public static AppiumDriverManager getDriver() {
+        return webDriver.get();
     }
 }
