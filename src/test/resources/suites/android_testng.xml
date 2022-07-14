@@ -8,10 +8,10 @@
         </classes>
     </test>
 
-<!--    <test name="Pixel_4_XL">-->
-<!--        <parameter name="deviceId" value="android_2"/>-->
-<!--        <classes>-->
-<!--            <class name="signIn.android.SignInTest2"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Pixel_4_XL">
+        <parameter name="deviceId" value="android_4"/>
+        <classes>
+            <class name="signIn.android.SignInTest2"/>
+        </classes>
+    </test>
 </suite>
