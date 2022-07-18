@@ -1,0 +1,25 @@
+app: src/main/resources/apps/gas.app
+devices:
+  - deviceId: ios_1
+    deviceName: iPhone 11 Simulator
+    platformVersion: 15.5
+    udid: 794A91D0-0C31-4549-BE16-BB9937DB5239
+    devicePort: 8204
+
+  - deviceId: ios_2
+    deviceName: iPhone 13 Simulator
+    platformVersion: 15.5
+    udid: 110D33BC-7D52-4143-B1FD-CFC4087DAC50
+    devicePort: 8205
+
+  - deviceId: ios_3
+    deviceName: iPhone 13 Pro Simulator
+    platformVersion: 15.5
+#    udid: 110D33BC-7D52-4143-B1FD-CFC4087DAC50
+    devicePort: 8206
+
+  - deviceId: ios_1
+    deviceName: iPhone 11 Simulator
+    platformVersion: 15.5
+#    udid: 900B3389-C250-4D3E-A859-94CDAF340B86
+    devicePort: 8207

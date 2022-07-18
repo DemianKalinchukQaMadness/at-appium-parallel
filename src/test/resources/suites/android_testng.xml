@@ -2,16 +2,14 @@
 
 <suite name="AndroidNativeSuite" parallel="tests">
     <test name="Pixel_3A">
-        <parameter name="platform" value="android"/>
-        <parameter name="properties" value="Pixel_3A.properties"/>
+        <parameter name="deviceId" value="android_3"/>
         <classes>
             <class name="signIn.android.SignInTest"/>
         </classes>
     </test>
 
     <test name="Pixel_4_XL">
-        <parameter name="platform" value="android"/>
-        <parameter name="properties" value="Pixel_4_XL.properties"/>
+        <parameter name="deviceId" value="android_4"/>
         <classes>
             <class name="signIn.android.SignInTest2"/>
         </classes>

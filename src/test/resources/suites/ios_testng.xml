@@ -2,15 +2,13 @@
 
 <suite name="IOSNativeSuite" verbose="1" parallel="tests">
     <test name="iPhone_11">
-        <parameter name="platform" value="ios"/>
-        <parameter name="properties" value="iPhone_11.properties"/>
+        <parameter name="deviceId" value="ios_1"/>
         <classes>
             <class name="signIn.ios.SignInTest"/>
         </classes>
     </test>
     <test name="iPhone_13_Pro">
-        <parameter name="platform" value="ios"/>
-        <parameter name="properties" value="iPhone_13_Pro.properties"/>
+        <parameter name="deviceId" value="ios_2"/>
         <classes>
             <class name="signIn.ios.SignInTest"/>
         </classes>
