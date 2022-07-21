@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="AndroidNativeSuite" parallel="tests">
+    <test name="Pixel_3A">
+        <parameter name="deviceId" value="android_3"/>
+        <classes>
+            <class name="signIn.android.SignInTest"/>
+        </classes>
+    </test>
+
+    <test name="Pixel_4_XL">
+        <parameter name="deviceId" value="android_4"/>
+        <classes>
+            <class name="signIn.android.SignInTest2"/>
+        </classes>
+    </test>
+</suite>
