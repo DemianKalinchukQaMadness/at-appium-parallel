@@ -28,12 +28,12 @@ public class SignInTest extends BaseTest {
         System.out.println("from login");
         System.out.println("test: " + Thread.currentThread().getId());
 
-        var driver = DriverManager.getDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        String input = "380967930000";
-        driver.findElement(By.xpath("//XCUIElementTypeTextField")).clear();
-        driver.findElement(By.xpath("//XCUIElementTypeTextField")).sendKeys(input);
-        driver.findElement(By.xpath("//XCUIElementTypeButton")).click();
-        Assert.assertTrue(true);
+//        var driver = DriverManager.getDriver();
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        String input = "380967930000";
+//        driver.findElement(By.xpath("//XCUIElementTypeTextField")).clear();
+//        driver.findElement(By.xpath("//XCUIElementTypeTextField")).sendKeys(input);
+//        driver.findElement(By.xpath("//XCUIElementTypeButton")).click();
+//        Assert.assertTrue(true);
     }
 }

@@ -7,8 +7,8 @@
             <class name="signIn.android.SignInTest"/>
         </classes>
     </test>
-    <test name="iPhone_11">
-        <parameter name="deviceId" value="ios_2"/>
+    <test name="iPhone_14">
+        <parameter name="deviceId" value="ios_1"/>
         <classes>
             <class name="signIn.ios.SignInTest"/>
         </classes>

@@ -1,6 +1,7 @@
 package config.yml.android;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import config.yml.PlatformConfig;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,13 +9,9 @@ import java.util.List;
 
 @Getter
 @Setter
-public class AndroidConfig {
+public class AndroidConfig implements PlatformConfig {
 
-    @JsonProperty("app")
-    private String appPath;
-
-    @JsonProperty("devices")
-    private List<AndroidDeviceConfig> androidDevices;
+    @JsonProperty("devices") private List<AndroidDeviceConfig> androidDevices;
 
     public AndroidDeviceConfig getDeviceById(String deviceId) {
         return androidDevices.stream()

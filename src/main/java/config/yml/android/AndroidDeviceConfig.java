@@ -8,16 +8,9 @@ import lombok.Setter;
 @Setter
 public class AndroidDeviceConfig extends AndroidConfig {
 
-    @JsonProperty("deviceId")
-    private String id;
-
-    @JsonProperty("deviceName")
-    private String deviceName;
-
-    @JsonProperty("platformVersion")
-    private String version;
-
-    @JsonProperty("devicePort")
-    private int devicePort;
-
+    @JsonProperty("deviceId") private String id;
+    @JsonProperty("deviceName") private String deviceName;
+    @JsonProperty("platformVersion") private String version;
+    @JsonProperty("devicePort") private int devicePort;
+    @JsonProperty("app") private String appPath;
 }

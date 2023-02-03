@@ -10,10 +10,13 @@ import service.AppiumServerManager;
 
 public class BaseTest {
 
+    private AppiumServer appiumServer;
+
     @BeforeTest(alwaysRun = true)
     @Parameters(value = {"deviceId"})
     public void beforeTest(@Optional("ios_1") String deviceId) {
-        new AppiumServer();
+        appiumServer = new AppiumServer();
+        appiumServer.start();
         DriverFactory.createInstance(deviceId, new ResourcesYaml());
     }
 

@@ -27,9 +27,9 @@ public class AppiumServer {
                 .withLogFile(new File("AppiumLog.txt"));
 
         setService(AppiumDriverLocalService.buildService(builder));
-        getService().start();
     }
-    public URL getServerUrl() {
-        return getService().getUrl();
+
+    public void start() {
+        getService().start();
     }
 }

@@ -27,3 +27,6 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+# appium server logs
+AppiumLog.txt
