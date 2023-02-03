@@ -8,14 +8,14 @@ public class AppiumServerManager {
 
     private static ThreadLocal<AppiumDriverLocalService> service = new ThreadLocal<>();
 
-    public static AppiumDriverLocalService getService() {
+    public synchronized static AppiumDriverLocalService getService() {
         return service.get();
     }
 
-    public static void setService(AppiumDriverLocalService appiumDriverLocalService) {
+    public synchronized static void setService(AppiumDriverLocalService appiumDriverLocalService) {
         service.set(appiumDriverLocalService);
     }
-    public static URL getServerUrl() {
+    public synchronized static URL getServerUrl() {
         return getService().getUrl();
     }
 }

@@ -24,7 +24,6 @@ public class IOSCapabilities extends DesiredCapabilities {
         this.setCapability(DEVICE_NAME, config.getDeviceName());
         this.setCapability(UDID, config.getUdid());
         this.setCapability(APP, config.getAppPath());
-        this.setCapability(WDA_LOCAL_PORT, config.getDevicePort());
         this.setCapability(AUTO_ACCEPT_ALERTS, true);
     }
 }

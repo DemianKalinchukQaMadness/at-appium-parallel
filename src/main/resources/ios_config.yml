@@ -3,26 +3,22 @@ devices:
     deviceName: iPhone 14 Simulator
     platformVersion: 16.2
     udid: 39766BEE-5D8A-4CA3-954A-0631B425DD28
-    devicePort: 8204
     app: src/main/resources/apps/gas.app
 
   - deviceId: ios_2
     deviceName: iPhone 13 Simulator
     platformVersion: 15.5
     udid: 110D33BC-7D52-4143-B1FD-CFC4087DAC50
-    devicePort: 8205
     app: src/main/resources/apps/gas.app
 
   - deviceId: ios_3
     deviceName: iPhone 13 Pro Simulator
     platformVersion: 15.5
 #    udid: 110D33BC-7D52-4143-B1FD-CFC4087DAC50
-    devicePort: 8206
     app: src/main/resources/apps/gas.app
 
   - deviceId: ios_1
     deviceName: iPhone 11 Simulator
     platformVersion: 15.5
 #    udid: 900B3389-C250-4D3E-A859-94CDAF340B86
-    devicePort: 8207
     app: src/main/resources/apps/gas.app

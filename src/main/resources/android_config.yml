@@ -2,23 +2,19 @@ devices:
   - deviceId: android_1
     deviceName: Pixel 3a API 29
     platformVersion: 10.0
-    devicePort: 8200
     app: src/main/resources/apps/11252_prod.apk
 
   - deviceId: android_2
     deviceName: Pixel_4_XL_API_31
     platformVersion: 12.0
-    devicePort: 8201
     app: src/main/resources/apps/11252_prod.apk
 
   - deviceId: android_3
     deviceName: test_delivery
     platformVersion: 12.0
-    devicePort: 8202
     app: src/main/resources/apps/11252_prod.apk
 
   - deviceId: android_4
     deviceName: test_delivery_1
     platformVersion: 12.0
-    devicePort: 8203
     app: src/main/resources/apps/11252_prod.apk

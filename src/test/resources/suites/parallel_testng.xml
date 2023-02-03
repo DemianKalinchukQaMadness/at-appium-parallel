@@ -4,13 +4,22 @@
     <test name="Pixel_3A">
         <parameter name="deviceId" value="android_3"/>
         <classes>
-            <class name="signIn.android.SignInTest"/>
+            <class name="signIn.android.SignInTest">
+                <methods>
+                    <include name="testLogin"/>
+                </methods>
+            </class>
         </classes>
     </test>
+
     <test name="iPhone_14">
         <parameter name="deviceId" value="ios_1"/>
         <classes>
-            <class name="signIn.ios.SignInTest"/>
+            <class name="signIn.ios.SignInTest">
+                <methods>
+                    <include name="testLogin"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

@@ -23,7 +23,6 @@ public class AndroidCapabilities extends DesiredCapabilities {
         this.setCapability(AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
         this.setCapability(DEVICE_NAME, config.getDeviceName());
         this.setCapability(APP, config.getAppPath());
-        this.setCapability(SYSTEM_PORT, config.getDevicePort());
         this.setCapability(AVD, config.getDeviceName());
     }
 }
