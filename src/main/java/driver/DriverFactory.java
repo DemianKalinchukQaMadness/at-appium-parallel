@@ -29,8 +29,8 @@ import driver.manager.AppiumDriverManager;
 
 public class DriverFactory {
 
-    public static void createInstance(String deviceId,
-                                      ResourcesYaml resourcesYaml) {
+    public static void createDriverInstance(String deviceId,
+                                            ResourcesYaml resourcesYaml) {
         if (deviceId.contains("ios"))
             DriverManager.setDriver(new AppiumDriverManager(resourcesYaml.getIosConfig().getDeviceById(deviceId)));
         else

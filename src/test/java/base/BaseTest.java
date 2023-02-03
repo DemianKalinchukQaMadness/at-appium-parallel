@@ -10,14 +10,14 @@ import service.AppiumServerManager;
 
 public class BaseTest {
 
-    private AppiumServer appiumServer;
-
     @BeforeTest(alwaysRun = true)
     @Parameters(value = {"deviceId"})
     public void beforeTest(@Optional("ios_1") String deviceId) {
-        appiumServer = new AppiumServer();
-        appiumServer.start();
-        DriverFactory.createInstance(deviceId, new ResourcesYaml());
+
+        AppiumServerManager.setService(new AppiumServer().build());
+        AppiumServerManager.getService().start();
+
+        DriverFactory.createDriverInstance(deviceId, new ResourcesYaml());
     }
 
     @AfterMethod(alwaysRun = true)
@@ -27,9 +27,10 @@ public class BaseTest {
 
     @AfterTest(alwaysRun = true)
     public void teardown() {
-        if (DriverManager.getDriver() != null) {
+        if (DriverManager.getDriver() != null)
             DriverManager.getDriver().quit();
+
+        if (AppiumServerManager.getService().isRunning())
             AppiumServerManager.getService().stop();
-        }
     }
 }
