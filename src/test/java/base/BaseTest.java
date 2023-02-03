@@ -5,8 +5,8 @@ import driver.DriverFactory;
 import driver.manager.DriverManager;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import service.AppiumServer;
-import service.AppiumServerManager;
+import service.appium.AppiumServer;
+import service.appium.AppiumServerManager;
 
 public class BaseTest {
 
@@ -18,11 +18,6 @@ public class BaseTest {
         AppiumServerManager.getService().start();
 
         DriverFactory.createDriverInstance(deviceId, new ResourcesYaml());
-    }
-
-    @AfterMethod(alwaysRun = true)
-    public void afterMethod(ITestResult result) {
-        DriverManager.getDriver().resetApp();
     }
 
     @AfterTest(alwaysRun = true)

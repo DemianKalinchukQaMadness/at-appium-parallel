@@ -1,16 +1,26 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="IOSNativeSuite" verbose="1" parallel="tests">
+
     <test name="iPhone_11">
         <parameter name="deviceId" value="ios_1"/>
         <classes>
-            <class name="signIn.ios.SignInTest"/>
+            <class name="signIn.ios.IosSignInTest">
+                <methods>
+                    <include name="testLoginAndLogout"
+                </methods>
+            </class>
         </classes>
     </test>
+
     <test name="iPhone_13_Pro">
         <parameter name="deviceId" value="ios_2"/>
         <classes>
-            <class name="signIn.ios.SignInTest"/>
+            <class name="signIn.ios.IosSignInTest">
+                <methods>
+                    <include name="testLogin"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
