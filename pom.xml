@@ -64,21 +64,12 @@
                         <fileset>
                             <directory>${basedir}</directory>
                             <includes>
-                                <include>AppiumLog.txt</include>
+                                <include>**/AppiumLog_*.txt</include>
                             </includes>
                             <followSymlinks>false</followSymlinks>
                         </fileset>
                     </filesets>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>auto-clean</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
