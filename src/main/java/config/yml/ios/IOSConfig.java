@@ -1,7 +1,6 @@
 package config.yml.ios;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import config.yml.PlatformConfig;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class IOSConfig implements PlatformConfig {
+public class IOSConfig {
 
     @JsonProperty("devices") private List<IOSDeviceConfig> iosDevices;
 

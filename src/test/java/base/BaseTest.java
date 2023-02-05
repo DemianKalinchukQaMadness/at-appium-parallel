@@ -1,10 +1,12 @@
 package base;
 
 import config.ResourcesYaml;
-import driver.DriverFactory;
+import driver.SimpleDriverFactory;
 import driver.manager.DriverManager;
-import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import service.appium.AppiumServer;
 import service.appium.AppiumServerManager;
 
@@ -17,7 +19,7 @@ public class BaseTest {
         AppiumServerManager.setService(new AppiumServer().build());
         AppiumServerManager.getService().start();
 
-        DriverFactory.createDriverInstance(deviceId, new ResourcesYaml());
+        SimpleDriverFactory.createDriverInstance(deviceId, new ResourcesYaml());
     }
 
     @AfterTest(alwaysRun = true)
