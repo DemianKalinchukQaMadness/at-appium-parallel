@@ -5,10 +5,9 @@ import config.yml.ios.IOSDeviceConfig;
 import driver.capabilities.AndroidCapabilities;
 import driver.capabilities.IOSCapabilities;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import service.appium.AppiumServerManager;
 
-public class AppiumDriverManager extends AppiumDriver<MobileElement> {
+public class AppiumDriverManager extends AppiumDriver {
 
     public AppiumDriverManager(IOSDeviceConfig config) {
         super(AppiumServerManager.getServerUrl(), new IOSCapabilities(config));

@@ -11,7 +11,6 @@ public class AndroidSignInTest extends BaseTest {
     public void testLoginAndLogout(){
         System.out.println("from testLoginAndLogout");
         System.out.println("test: " + Thread.currentThread().getId());
-        System.out.println("driver: " + DriverManager.getDriver().getAutomationName());
         System.out.println("appium: " + AppiumServerManager.getService().getUrl());
     }
 
@@ -19,7 +18,6 @@ public class AndroidSignInTest extends BaseTest {
     public void testLogin() {
         System.out.println("from testLogin");
         System.out.println("test: " + Thread.currentThread().getId());
-        System.out.println("driver: " + DriverManager.getDriver().getAutomationName());
         System.out.println("appium: " + AppiumServerManager.getService().getUrl());
     }
 }

@@ -6,7 +6,6 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static io.appium.java_client.remote.IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS;
-import static io.appium.java_client.remote.IOSMobileCapabilityType.WDA_LOCAL_PORT;
 import static io.appium.java_client.remote.MobileCapabilityType.*;
 import static org.openqa.selenium.remote.CapabilityType.PLATFORM_NAME;
 

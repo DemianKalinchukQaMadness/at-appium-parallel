@@ -6,7 +6,6 @@ import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
 import java.io.File;
 import java.time.Instant;
-import java.util.Date;
 import java.util.HashMap;
 
 public class AppiumServer {
@@ -23,6 +22,7 @@ public class AppiumServer {
                 .usingAnyFreePort()
                 .withEnvironment(environment)
                 .withArgument(GeneralServerFlag.LOCAL_TIMEZONE)
+                .withArgument(GeneralServerFlag.BASEPATH, "/wd/hub/")
                 .withArgument(GeneralServerFlag.LOG_LEVEL, "error:debug") //log level for appium
                 .withLogFile(new File("AppiumLog_" + Instant.now().toEpochMilli() + ".txt"));
     }
